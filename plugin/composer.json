@@ -1,0 +1,12 @@
+{
+  "name": "hexagon-automation",
+  "type": "wordpress-plugin",
+  "require": {
+    "php": ">=7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Hexagon\\": "includes/"
+    }
+  }
+}

@@ -1,0 +1,1 @@
+Supported languages: pl, en, es, fr

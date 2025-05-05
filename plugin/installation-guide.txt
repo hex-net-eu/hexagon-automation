@@ -1,0 +1,5 @@
+1. Upload hexagon-automation.zip to WordPress
+2. Activate plugin
+3. Run Setup Wizard
+4. Follow configuration steps
+5. Automate content
