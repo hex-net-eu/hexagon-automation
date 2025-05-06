@@ -21,8 +21,8 @@ jobs:
       - name: Setup SSH and add key
         run: |
           cat << 'EOF' > private_key
-${{ secrets.SSH_PRIVATE_KEY }}
-EOF
+          ${{ secrets.SSH_PRIVATE_KEY }}
+          EOF
           chmod 600 private_key
           eval "$(ssh-agent -s)"
           ssh-add private_key
