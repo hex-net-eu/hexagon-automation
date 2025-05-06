@@ -20,7 +20,9 @@ jobs:
 
       - name: Setup SSH and add key
         run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
+          cat << 'EOF' > private_key
+${{ secrets.SSH_PRIVATE_KEY }}
+EOF
           chmod 600 private_key
           eval "$(ssh-agent -s)"
           ssh-add private_key
@@ -39,7 +41,8 @@ jobs:
             unzip -o /tmp/hexagon-automation.zip -d "${{ secrets.DEPLOY_PATH }}"
             # Spróbuj aktualizacji, a jeśli wtyczka nie jest jeszcze zainstalowana, aktywuj ją
             wp plugin update hexagon-automation \
-               --path=/var/www/vhosts/euexs.com/httpdocs/wordpress --allow-root \
-              || wp plugin activate hexagon-automation \
-               --path=/var/www/vhosts/euexs.com/httpdocs/wordpress --allow-root
+              --path=/var/www/vhosts/euexs.com/httpdocs/wordpress --allow-root \
+            || wp plugin activate hexagon-automation \
+              --path=/var/www/vhosts/euexs.com/httpdocs/wordpress --allow-root
           EOF
+
