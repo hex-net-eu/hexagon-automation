@@ -6,50 +6,34 @@ on:
       - main
 
 jobs:
-  build:
-    name: Build ZIP
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Archive plugin to ZIP
-        run: |
-          cd plugin
-          zip -r ../hexagon-automation.zip ./*
-
-      - name: Upload ZIP artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: hexagon-automation
-          path: hexagon-automation.zip
-
   deploy:
-    name: Deploy to Server
-    needs: build
+    name: Build ZIP & Deploy
     runs-on: ubuntu-latest
+
     steps:
-      - name: Download ZIP artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: hexagon-automation
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Start SSH agent
-        uses: webfactory/ssh-agent@v0.8.1
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - name: Set up SSH agent
+      uses: webfactory/ssh-agent@v0.8.1
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Copy ZIP to server
-        run: |
-          scp hexagon-automation.zip ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/tmp/
+    - name: Build plugin ZIP
+      run: |
+        zip -r hexagon-automation.zip plugin/
 
-      - name: Deploy via SSH and wp-cli
-        run: |
-          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
-            set -eo pipefail
-            # Rozpakuj nadpisując
-            unzip -o /tmp/hexagon-automation.zip -d "${{ secrets.DEPLOY_PATH }}"
-            # Aktywuj lub przeładuj wtyczkę
-            wp plugin update hexagon-automation --path=/var/www/vhosts/euexs.com/httpdocs/wordpress --allow-root || \
-            wp plugin activate hexagon-automation --path=/var/www/vhosts/euexs.com/httpdocs/wordpress --allow-root
-          EOF
+    - name: Copy ZIP to server
+      run: |
+        scp hexagon-automation.zip ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/tmp/
+
+    - name: Deploy on server via SSH & wp-cli
+      run: |
+        ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
+          set -euo pipefail
+          # Rozpakuj plugin do katalogu wtyczki, nadpisując pliki
+          unzip -o /tmp/hexagon-automation.zip -d "${{ secrets.DEPLOY_PATH }}"
+          # Spróbuj aktualizacji, a jeśli wtyczka nie jest jeszcze zainstalowana, aktywuj ją
+          wp plugin update hexagon-automation --path=/var/www/vhosts/euexs.com/httpdocs/wordpress --allow-root || \
+          wp plugin activate hexagon-automation --path=/var/www/vhosts/euexs.com/httpdocs/wordpress --allow-root
+        EOF
