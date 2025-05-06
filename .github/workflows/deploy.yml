@@ -11,29 +11,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up SSH agent
-      uses: webfactory/ssh-agent@v0.8.1
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Build plugin ZIP
+        run: |
+          zip -r hexagon-automation.zip plugin/
 
-    - name: Build plugin ZIP
-      run: |
-        zip -r hexagon-automation.zip plugin/
+      - name: Setup SSH and add key
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
+          chmod 600 private_key
+          eval "$(ssh-agent -s)"
+          ssh-add private_key
 
-    - name: Copy ZIP to server
-      run: |
-        scp hexagon-automation.zip ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/tmp/
+      - name: Copy ZIP to server
+        run: |
+          scp -o StrictHostKeyChecking=no hexagon-automation.zip \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:/tmp/
 
-    - name: Deploy on server via SSH & wp-cli
-      run: |
-        ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
-          set -euo pipefail
-          # Rozpakuj plugin do katalogu wtyczki, nadpisując pliki
-          unzip -o /tmp/hexagon-automation.zip -d "${{ secrets.DEPLOY_PATH }}"
-          # Spróbuj aktualizacji, a jeśli wtyczka nie jest jeszcze zainstalowana, aktywuj ją
-          wp plugin update hexagon-automation --path=/var/www/vhosts/euexs.com/httpdocs/wordpress --allow-root || \
-          wp plugin activate hexagon-automation --path=/var/www/vhosts/euexs.com/httpdocs/wordpress --allow-root
-        EOF
+      - name: Deploy on server via SSH & wp-cli
+        run: |
+          ssh -o StrictHostKeyChecking=no \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
+            set -euo pipefail
+            # Rozpakuj plugin do katalogu wtyczki, nadpisując pliki
+            unzip -o /tmp/hexagon-automation.zip -d "${{ secrets.DEPLOY_PATH }}"
+            # Spróbuj aktualizacji, a jeśli wtyczka nie jest jeszcze zainstalowana, aktywuj ją
+            wp plugin update hexagon-automation \
+               --path=/var/www/vhosts/euexs.com/httpdocs/wordpress --allow-root \
+              || wp plugin activate hexagon-automation \
+               --path=/var/www/vhosts/euexs.com/httpdocs/wordpress --allow-root
+          EOF
