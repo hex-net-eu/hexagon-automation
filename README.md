@@ -1,8 +1,27 @@
-# Hexagon Automation v3.0.0
+# 🚀 Hexagon Automation v3.1.1 - Enterprise Edition
 
-**AI-powered content & social media automation for WordPress with advanced auto-repair capabilities.**
+[![WordPress Plugin](https://img.shields.io/badge/WordPress-Plugin-blue.svg)](https://wordpress.org)
+[![Version](https://img.shields.io/badge/Version-3.1.1-green.svg)](https://github.com/hexagon-technology/hexagon-automation/releases)
+[![License](https://img.shields.io/badge/License-GPLv2-red.svg)](LICENSE)
+[![PHP](https://img.shields.io/badge/PHP-7.4+-purple.svg)](https://php.net)
+[![React](https://img.shields.io/badge/React-18+-blue.svg)](https://reactjs.org)
 
-## 🚀 New in Version 3.0.0
+**AI-powered content & social media automation for WordPress**
+
+Transform your WordPress site into an AI-powered content machine with advanced automation capabilities.
+
+## 🎯 **New in Version 3.1.1 - Enterprise Edition**
+
+- **Complete WordPress Integration** - Native hooks, shortcodes, and admin interface
+- **Enhanced Authentication System** - Secure API key management and sessions
+- **Multi-Provider AI Support** - ChatGPT, Claude, Perplexity with quality scoring
+- **Advanced Image Generation** - DALL-E 3, Stable Diffusion with WordPress media integration
+- **Comprehensive Social Media** - Facebook, Twitter, Instagram, LinkedIn automation
+- **Real-Time Analytics** - Performance monitoring and detailed reporting
+- **Enterprise Security** - Input validation, CSRF protection, data encryption
+- **WordPress.org Compliance** - Full standards compliance with proper documentation
+
+## 🚀 Features
 
 ### ✅ Fully Functional AI Integration
 - **ChatGPT, Claude & Perplexity APIs** - Real working implementations

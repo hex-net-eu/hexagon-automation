@@ -1,0 +1,96 @@
+{
+  "name": "hexagon-automation",
+  "version": "3.0.1",
+  "description": "AI-powered content & social media automation for WordPress with advanced auto-repair capabilities",
+  "author": "Hexagon Technology <support@hex-net.eu>",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://hex-net.eu/hexagon-automation",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hexagon-technology/hexagon-automation"
+  },
+  "keywords": [
+    "wordpress",
+    "plugin",
+    "ai",
+    "automation",
+    "chatgpt",
+    "claude",
+    "social-media",
+    "email",
+    "auto-repair",
+    "content-generation"
+  ],
+  "requirements": {
+    "wordpress": ">=5.0",
+    "php": ">=7.4",
+    "mysql": ">=5.6"
+  },
+  "features": {
+    "ai_providers": [
+      "ChatGPT",
+      "Claude", 
+      "Perplexity"
+    ],
+    "social_platforms": [
+      "Facebook",
+      "Instagram", 
+      "Twitter/X",
+      "LinkedIn"
+    ],
+    "content_types": [
+      "articles",
+      "guides", 
+      "reviews",
+      "social_posts",
+      "emails",
+      "tutorials",
+      "case_studies",
+      "press_releases",
+      "blog_posts",
+      "product_descriptions"
+    ],
+    "automation": [
+      "auto_posting",
+      "email_scheduling",
+      "health_monitoring",
+      "auto_repair",
+      "error_recovery",
+      "performance_optimization"
+    ]
+  },
+  "architecture": {
+    "backend": "PHP 7.4+ / WordPress",
+    "frontend": "React 18 + TypeScript",
+    "api": "WordPress REST API + Custom endpoints",
+    "database": "MySQL with custom tables",
+    "styling": "Tailwind CSS + shadcn/ui"
+  },
+  "documentation": {
+    "readme": "README.md",
+    "installation": "INSTALLATION.md", 
+    "quick_start": "QUICK_START.md",
+    "api_docs": "API_DOCUMENTATION.md",
+    "developer_guide": "DEVELOPER_GUIDE.md",
+    "changelog": "CHANGELOG.md"
+  },
+  "testing": {
+    "system_tests": "30+ automated tests",
+    "modules_covered": [
+      "core_functionality",
+      "database_integrity", 
+      "ai_integration",
+      "email_system",
+      "social_media",
+      "rest_api",
+      "auto_repair",
+      "security"
+    ]
+  },
+  "support": {
+    "email": "support@hex-net.eu",
+    "documentation": "Complete guides included",
+    "auto_diagnosis": "Built-in system tests",
+    "auto_repair": "Self-healing capabilities"
+  }
+}

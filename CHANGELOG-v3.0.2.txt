@@ -1,0 +1,126 @@
+=== HEXAGON AUTOMATION - CHANGELOG v3.0.2 ===
+Data: 2025-01-13
+
+🛠️ GŁÓWNE NAPRAWY - AJAX ERROR FIXES
+
+[CRITICAL] Naprawiono błędy HTTP 500 w admin-ajax.php
+- Dodano includes/ajax-fix.php - comprehensive error handling
+- Wszystkie AJAX calls teraz mają try-catch wrappers
+- Safe fallbacks dla undefined functions
+
+[CRITICAL] Naprawiono brakujące nonces w JavaScript
+- Dodano includes/admin-nonces.php - proper nonce generation
+- Dodano assets/js/nonces.js - bezpieczne AJAX calls
+- wp_localize_script() dla wszystkich potrzebnych nonces
+
+[CRITICAL] Naprawiono undefined functions podczas AJAX
+- hexagon_log() - dodano safe fallback
+- hexagon_get_option() - dodano safe fallback  
+- Graceful degradation gdy functions nie są loaded
+
+[CRITICAL] Naprawiono crashes w AI Manager
+- Wszystkie API calls otoczone try-catch
+- Proper error messages zamiast fatal errors
+- Optional nonce checking z fallbacks
+
+🚀 NOWE FUNKCJE
+
+[NEW] hexagon-automation-fixed.php
+- Uproszczona wersja do testowania AJAX
+- Built-in diagnostic dashboard
+- Test buttons dla wszystkich funkcji AJAX
+
+[NEW] Debug Export System
+- debug-logs.txt - template do wypełnienia
+- debug-direct-access.php - bezpośredni dostęp do logów
+- Automatic system info collection
+
+[NEW] Enhanced Error Handling
+- Wszystkie AJAX functions z proper error handling
+- Detailed error messages w JSON responses
+- Error logging do WordPress debug.log
+
+🔧 POPRAWKI TECHNICZNE
+
+[FIX] File Loading Order
+- ajax-fix.php loaded before activation
+- admin-nonces.php loaded early
+- Proper initialization sequence
+
+[FIX] WordPress Plugin Structure  
+- Główny katalog zawsze: hexagon-automation/
+- Poprawna struktura dla WordPress installer
+- Valid plugin headers w wszystkich wersjach
+
+[FIX] Database Schema
+- Poprawione column names w hex_logs table
+- Safe table creation checks
+- Backward compatibility
+
+[FIX] JavaScript Integration
+- Proper nonce passing do frontend
+- Auto-test connection functionality
+- Console error reporting
+
+📊 WERSJE PLUGINA W PAKIECIE
+
+✅ hexagon-automation.php (v3.0.2)
+   - Główna wersja z pełną funkcjonalnością
+   - Wszystkie moduły: AI, Email, Social, Auto-repair
+   - Naprawione błędy AJAX
+
+✅ hexagon-automation-fixed.php
+   - Wersja testowa z diagnostyką
+   - Bezpieczne AJAX bez external API calls
+   - Built-in test dashboard
+
+✅ hexagon-automation-safe.php
+   - Średnia funkcjonalność
+   - Basic modules bez complex features
+   - Fallback option
+
+✅ hexagon-automation-minimal.php  
+   - Tylko podstawowa aktywacja
+   - Environment compatibility testing
+   - Debug information
+
+🎯 ZALECANA KOLEJNOŚĆ INSTALACJI
+
+1. Zainstaluj ZIP przez WordPress admin
+2. Aktywuj: hexagon-automation-fixed.php
+3. Test AJAX w admin panel
+4. Jeśli OK → aktywuj hexagon-automation.php
+5. Konfiguruj API keys i settings
+
+⚠️ WYMAGANIA SYSTEMU
+
+- WordPress 5.0+
+- PHP 7.4+
+- MySQL 5.7+
+- Memory Limit: 256MB+
+- cURL extension enabled
+- JSON extension enabled
+
+🔄 MIGRACJA Z POPRZEDNICH WERSJI
+
+- v3.0.1 → v3.0.2: Automatic upgrade
+- v3.0.0 → v3.0.2: Database schema auto-update
+- v2.x → v3.0.2: Manual configuration required
+
+📋 ZNANE PROBLEMY
+
+- Dashboard React build wymaga separate hosting
+- Social media APIs wymagają app registration
+- Email SMTP settings muszą być skonfigurowane manually
+
+🔮 NASTĘPNE WERSJE (ROADMAP)
+
+v3.0.3 (Planowana):
+- Enhanced social media scheduling
+- Better error recovery mechanisms
+- Performance optimizations
+
+v3.1.0 (Przyszłość):
+- Additional AI providers
+- Advanced content templates
+- Multi-language support improvements

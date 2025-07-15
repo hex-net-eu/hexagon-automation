@@ -63,6 +63,10 @@ class Hexagon_Automation {
             Hexagon_System_Tester::init();
         }
         
+        if (class_exists('Hexagon_Debug_Exporter')) {
+            Hexagon_Debug_Exporter::init();
+        }
+        
         // Initialize AI providers
         if (class_exists('Hexagon_Ai_Chatgpt')) {
             Hexagon_Ai_Chatgpt::init();

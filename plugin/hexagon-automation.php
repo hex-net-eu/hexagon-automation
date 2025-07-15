@@ -3,7 +3,7 @@
  * Plugin Name:     Hexagon Automation
  * Plugin URI:      https://hex-net.eu/hexagon-automation
  * Description:     AI-powered content & social media automation for WordPress.
- * Version:         2.5.0
+ * Version:         3.0.0
  * Requires at least: 5.0
  * Requires PHP: 7.4
  * Tested up to:    6.4
@@ -49,6 +49,9 @@ if ( ! defined( 'HEXAGON_PATH' ) ) {
 }
 if ( ! defined( 'HEXAGON_URL' ) ) {
     define( 'HEXAGON_URL', plugin_dir_url( __FILE__ ) );
+}
+if ( ! defined( 'HEXAGON_VERSION' ) ) {
+    define( 'HEXAGON_VERSION', '3.0.0' );
 }
 
 // Load core and activation

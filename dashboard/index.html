@@ -2,23 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>hexagon-content-forge</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+    <title>Hexagon Automation Dashboard</title>
+    <meta name="description" content="AI-powered content & social media automation dashboard" />
+    <meta name="author" content="Hexagon Technology" />
 
-    <meta property="og:title" content="hexagon-content-forge" />
-    <meta property="og:description" content="Lovable Generated Project" />
+    <meta property="og:title" content="Hexagon Automation Dashboard" />
+    <meta property="og:description" content="AI-powered content & social media automation for WordPress" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <script>
+      // Configuration for WordPress integration
+      window.hexagonConfig = {
+        apiUrl: window.location.origin + '/wp-json/hexagon/v1',
+        wpUrl: window.location.origin,
+        version: '3.0.9'
+      };
+    </script>
+    <script type="module" crossorigin src="/assets/index-CP9DvJfg.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Cv4GhbNh.css">
   </head>
 
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

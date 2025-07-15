@@ -1,5 +1,29 @@
 # Hexagon Automation - Changelog
 
+## 3.0.1 (2025-01-13) - 🔧 CRITICAL FIXES
+
+### 🐛 Bug Fixes
+- **Fixed critical activation error** - Plugin now activates without fatal errors
+- **Corrected database schema** - Updated `hex_logs` table structure with proper columns
+- **Fixed logging function** - Updated `hexagon_log()` signature to match new implementation
+- **Improved error handling** - Added comprehensive error checking in activation process
+- **Fixed module loading** - Corrected file inclusion order to prevent conflicts
+
+### 🛠️ Technical Improvements
+- **Enhanced activation safety** - Added version and requirement checks
+- **Better exception handling** - Graceful error messages instead of white screen
+- **Database migration** - Automatic schema updates for existing installations
+- **Safe mode testing** - Added `hexagon-automation-safe.php` for troubleshooting
+
+### 📚 Documentation
+- **Added TESTING_INSTRUCTIONS.md** - Step-by-step troubleshooting guide
+- **Updated README** - Corrected version references
+- **Enhanced error diagnostics** - Better debugging information
+
+### 🔒 Security
+- **Improved input validation** - Enhanced sanitization in logging functions
+- **Better error exposure** - Prevented sensitive information leakage in error messages
+
 ## 3.0.0 (2025-01-13) - 🚀 MAJOR RELEASE
 
 ### 🆕 New Features

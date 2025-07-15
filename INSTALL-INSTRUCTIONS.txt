@@ -1,0 +1,115 @@
+=== HEXAGON AUTOMATION v3.0.3 - INSTRUKCJA INSTALACJI ===
+
+🛠️ TA WERSJA NAPRAWIA BŁĘDY HTTP 500 W ADMIN-AJAX.PHP + SYNTAX ERRORS
+
+=== KROK 1: INSTALACJA PRZEZ WORDPRESS ADMIN ===
+
+1. Przejdź do: WordPress Admin → Wtyczki → Dodaj nową
+2. Kliknij: "Wyślij wtyczkę na serwer"
+3. Wybierz: hexagon-automation-v3.0.3.zip
+4. Kliknij: "Zainstaluj teraz"
+5. Kliknij: "Aktywuj wtyczkę"
+
+=== KROK 2: WYBÓR WERSJI DO AKTYWACJI ===
+
+Po instalacji będziesz miał dostęp do 4 wersji plugina:
+
+📌 ZALECANA KOLEJNOŚĆ TESTOWANIA:
+
+1. ⭐ Hexagon Automation (Fixed AJAX) - ZACZNIJ OD TEJ
+   - Plik: hexagon-automation-fixed.php
+   - Uproszczona wersja z diagnostyką
+   - Ma built-in test AJAX
+
+2. 🚀 Hexagon Automation - GŁÓWNA WERSJA
+   - Plik: hexagon-automation.php (v3.0.3)
+   - Pełna funkcjonalność z naprawionymi błędami
+   - Testuj tylko jeśli #1 działa
+
+3. 🔒 Hexagon Automation (Safe Mode)
+   - Plik: hexagon-automation-safe.php
+   - Średnia funkcjonalność, bezpieczniejsza
+
+4. 🧪 Hexagon Automation (Minimal Test)
+   - Plik: hexagon-automation-minimal.php
+   - Tylko podstawowa aktywacja
+
+=== KROK 3: TEST AJAX (PO AKTYWACJI FIXED) ===
+
+1. Przejdź do: Admin → Hexagon Fixed
+2. Kliknij: "🧪 Test AJAX"
+3. Sprawdź wyniki w sekcji "📋 Rezultat testów"
+
+=== KROK 4: JEŚLI MASZ BŁĘDY ===
+
+1. Włącz debug w wp-config.php:
+   define( 'WP_DEBUG', true );
+   define( 'WP_DEBUG_LOG', true );
+   define( 'WP_DEBUG_DISPLAY', false );
+
+2. Wypełnij plik: debug-logs.txt
+3. Albo otwórz: https://bizrun.eu/wp-content/plugins/hexagon-automation/debug-direct-access.php
+
+=== KROK 5: GŁÓWNE FUNKCJE (PO POMYŚLNEJ AKTYWACJI) ===
+
+📊 DASHBOARD:
+- Admin → Hexagon Automation
+- Zarządzanie AI, Email, Social Media
+
+🤖 AI CONTENT:
+- ChatGPT, Claude, Perplexity integration
+- 20+ typów treści
+
+📧 EMAIL AUTOMATION:
+- SMTP auto-configuration
+- Retry logic, error recovery
+
+📱 SOCIAL MEDIA:
+- Facebook, Instagram, Twitter, LinkedIn
+- Auto-posting, scheduling
+
+🔧 AUTO-REPAIR:
+- Proactive monitoring
+- Automatic error fixing
+
+=== KROK 6: KONFIGURACJA API KEYS ===
+
+1. Przejdź do: Settings → AI Settings
+2. Dodaj klucze API:
+   - OpenAI API Key (ChatGPT)
+   - Anthropic API Key (Claude)
+   - Perplexity API Key
+
+3. Skonfiguruj email: Settings → Email
+4. Połącz social media: Settings → Social Media
+
+=== POMOC I WSPARCIE ===
+
+📋 Debug Export: Admin → Debug Export
+📚 Dokumentacja: Sprawdź pliki .md w katalogu plugina
+🔍 Logi: /wp-content/debug.log
+
+=== CO ZOSTAŁO NAPRAWIONE W v3.0.3 ===
+
+❌ Błąd: Parse error: syntax error, unexpected token "global"
+✅ Fix: Poprawiono składnię PHP w class-system-tester.php
+
+❌ Błąd: Plugin nie aktywuje się przez syntax error
+✅ Fix: Przeniesiono global $wpdb; poza array definition
+
+=== WCZEŚNIEJSZE NAPRAWY W v3.0.2 ===
+
+❌ Błąd: HTTP 500 w admin-ajax.php
+✅ Fix: Dodano ajax-fix.php z error handling
+
+❌ Błąd: Brak nonces w JavaScript
+✅ Fix: Dodano admin-nonces.php + nonces.js
+
+❌ Błąd: Functions hexagon_log() undefined
+✅ Fix: Safe fallbacks w ajax-fix.php
+
+❌ Błąd: Unhandled exceptions w AI Manager  
+✅ Fix: Try-catch wrappers dla wszystkich AJAX
+
+❌ Błąd: check_ajax_referer() crashes
+✅ Fix: Optional nonce checking z graceful fallbacks
